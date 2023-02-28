@@ -12,16 +12,16 @@ describe('Start Point', async function () {
 
   beforeEach('Deployments', async function () {
     [owner, user1, user2] = await ethers.getSigners();
-    const falloutFactory = await ethers.getContractFactory(
+    const GuessNumberFactory = await ethers.getContractFactory(
       'GuessTheRandomNumberChallenge'
     );
 
-    guessNumberContract = await falloutFactory.deploy({
+    guessNumberContract = await GuessNumberFactory.deploy({
       value: ethers.utils.parseEther('1'),
     });
   });
 
-  describe('Hack Fallout', async function () {
+  describe('Hack Guess Number', async function () {
     it('Should call the guessNumberContract', async function () {
       const answer = getUint8(guessNumberContract.address);
 
@@ -34,6 +34,8 @@ describe('Start Point', async function () {
   });
 });
 
+// ! This article demostrate how we can interact with slots by ethers.js on-chain
+// https://betterprogramming.pub/solidity-storage-variables-with-ethers-js-ca3c7e2c2a64
 async function getUint8(contractAddress: string) {
   const paddedSlot = ethers.utils.hexZeroPad('0x0', 8);
   const storageLocation = await ethers.provider.getStorageAt(
