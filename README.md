@@ -1,13 +1,20 @@
-# Sample Hardhat Project
+# Solidity Hacking Challenges
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+
+This repository contains a smart contract hacking challenges from different resources such as:
+ethernaut, guess the number.
+
+# Tests
 
 Try running some of the following tasks:
 
-npm i
+npm ci
 
 npx hardhat compile
 
 npx hardhat test
 
-npx hardhat run --network mumbai scripts/deploy.ts
+# Contribution
+
+We welcome contributions to this repository. If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
