@@ -25,7 +25,7 @@ describe('Start Point', async function () {
         await loadFixture(setup));
     });
 
-    it('Should call the goTo method', async function () {
+    it('Should call the attack method', async function () {
       await shopAttackerContract.attack();
 
       expect(await shopContract.isSold()).to.equal(true);
