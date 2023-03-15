@@ -43,7 +43,7 @@ describe('Start Point', async function () {
       } = await loadFixture(setup));
     });
 
-    it('Should call the attack method', async function () {
+    it('Should lock guess and settle', async function () {
       await predictTheFutureAttackerContract.lockInGuess(0, {
         value: ethers.utils.parseEther('1'),
       });

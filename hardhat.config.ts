@@ -21,6 +21,10 @@ const config = {
         },
       },
       {
+        version: '0.6.12',
+        settings: {},
+      },
+      {
         version: '0.6.0',
         settings: {},
       },
