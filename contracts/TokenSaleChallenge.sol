@@ -25,3 +25,4 @@ contract TokenSaleChallenge {
     msg.sender.transfer(numTokens * PRICE_PER_TOKEN);
   }
 }
+contract TokenSaleAttacker
