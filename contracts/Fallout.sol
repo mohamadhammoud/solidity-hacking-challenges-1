@@ -5,11 +5,9 @@ pragma solidity ^0.6.0;
 import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract Fallout {
-  
   using SafeMath for uint256;
-  mapping (address => uint) allocations;
+  mapping(address => uint) allocations;
   address payable public owner;
-
 
   /* constructor */
   function Fal1out() public payable {
@@ -17,13 +15,10 @@ contract Fallout {
     allocations[owner] = msg.value;
   }
 
-  modifier onlyOwner {
-	        require(
-	            msg.sender == owner,
-	            "caller is not the owner"
-	        );
-	        _;
-	    }
+  modifier onlyOwner() {
+    require(msg.sender == owner, 'caller is not the owner');
+    _;
+  }
 
   function allocate() public payable {
     allocations[msg.sender] = allocations[msg.sender].add(msg.value);
